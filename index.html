@@ -3,20 +3,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 <body>
-    <div ng-app="myApp" ng-controller="myCtrl">
-        <p>The url of this page is:</p>
-        <h1>{{myUrl}}</h1>
-    </div>
+    
 
-    <p>This example uses the built-in $location service to get the absolute url of the page.</p>
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <h1 ng-mousemove="myFunc($event)">Mouse Over Me!</h1>
+
+        <p>Coordinates: {{x + ', ' + y}}</p>
+
+    </div>
     <script>
         var app = angular.module('myApp', []);
-
-        app.controller('myCtrl', function ($scope, $location) {
-            $scope.myUrl = $location.absUrl();
+        app.controller('myCtrl', function ($scope) {
+            $scope.myFunc = function (myE) {
+                $scope.x = myE.clientX;
+                $scope.y = myE.clientY;
+            }
         });
-    </script>
 
+    </script>
 </body>
 
 </html>
